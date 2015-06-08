@@ -1,89 +1,90 @@
-##Configure Tvheadend
 
-This section gives a high-level overview of the steps needed to get Tvheadend
-up and running. For more detailed information, please consult the rest of
-this guide - much of it is arranged in the same order as the tabs on the
-Tvheadend interface so you know where to look.
+## _("Configure Tvheadend")
 
-You can also consult the in-application help text, which mirrors this guide
-to a very great extent.
+_("This section gives a high-level overview of the steps needed to get Tvheadend \
+up and running. For more detailed information, please consult the rest of \
+this guide - much of it is arranged in the same order as the tabs on the \
+Tvheadend interface so you know where to look.")
 
-###1. Ensure Tuners are Available for Use
+_("You can also consult the in-application help text, which mirrors this guide \
+to a very great extent.")
 
-**Tvheadend web interface: _Configuration -> DVB Inputs -> TV Adapters_**
+###1. _("Ensure Tuners are Available for Use")
 
-On this tab, you'll see a tree structure, with the Linux device list at the
-top level (e.g. `/dev/dvb/adapter0`)
+**_("Tvheadend web interface"): _ _("Configuration") -> _("DVB Inputs") -> _("TV Adapters") _**
 
-Individual tuners are then the next level down (e.g. `DiBcom 7000PC : DVB-T #0`)
+_("On this tab, you'll see a tree structure, with the Linux device list at the \
+top level") (_("e.g.") `/dev/dvb/adapter0`)
 
-Click on each tuner that you want Tvheadend to use, and ensure "Enabled"
-is checked in the 'Parameters' list
+_("Individual tuners are then the next level down (e.g. `DiBcom 7000PC : DVB-T #0`)")
 
-If anything is obviously wrong at this point, you probably have a
-driver/firmware error which you'll need to resolve before going any further.
+_("Click on each tuner that you want Tvheadend to use, and ensure "Enabled" \
+is checked in the 'Parameters' list")
 
-###2. Set up Relevant Network(s)
+_("If anything is obviously wrong at this point, you probably have a \
+driver/firmware error which you'll need to resolve before going any further.")
 
-**Tvheadend web interface: _Configuration -> DVB Inputs -> Networks_**
+###2. _("Set up Relevant Network(s)")
 
-Create a network of the appropriate type here. You can have multiple networks
-of the same type as necessary, e.g. to have two DVB-T networks defined,
-one with HD muxes, one without.
+**_("Tvheadend web interface"): _ _("Configuration") -> _("DVB Inputs") -> _("Networks") _**
 
-The creation process allows you to select from a series of pre-defined mux
-lists for common DVB sources. These are maintained outside of Tvheadend, and
-are downloaded from [linuxtv](http://git.linuxtv.org/cgit.cgi/dtv-scan-tables.git/)
-- but they do go out of date as broadcasters move services around and national
-authorities change entire pieces of spectrum. As such, you should try the
-pre-defined values, but you may need to add muxes manually.
+_("Create a network of the appropriate type here. You can have multiple networks \
+of the same type as necessary, e.g. to have two DVB-T networks defined, \
+one with HD muxes, one without.")
 
-<div class="admonition warning">
-<p class="admonition-title">Critical Configuration Items</p>
-<p>Critical configuration items at this stage: <........></p>
-<p><strong>NOTE: <font color=red>TEXT REQUIRED</font></strong></p>
-</div>
-
-###3. Associate the Network with the Respective Tuner(s)
-
-**Tvheadend web interface: _Configuration -> DVB Inputs -> TV Adapters_**
-
-Associate each of your tuners with the correct network through _Parameters -> Basic Settings_. 
-
-This can be as simple or as complex as necessary. You may simply have, for
-example, a single DVB-S2 network defined and then associate this with all
-DVB-S2 tuners. Or, you might have multiple networks defined - different
-satellites, different encoding. So, as further examples, you might define
-and then associate an HD DVB-T2 (e.g. H.264) network with HD tuners, while
-having a separate SD network associated with an independent SD (e.g. MPEG-2)
-tuner. 
+_("The creation process allows you to select from a series of pre-defined mux \
+lists for common DVB sources. These are maintained outside of Tvheadend, and \
+are downloaded from") [linuxtv](http://git.linuxtv.org/cgit.cgi/dtv-scan-tables.git/)
+_("- but they do go out of date as broadcasters move services around and national \
+authorities change entire pieces of spectrum. As such, you should try the \
+pre-defined values, but you may need to add muxes manually.")
 
 <div class="admonition warning">
-<p class="admonition-title">Critical Configuration Items</p>
-<p>Critical configuration items at this stage: <........></p>
-<p><strong>NOTE: <font color=red>TEXT REQUIRED</font></strong></p>
+<p class="admonition-title">_("Critical Configuration Items")</p>
+<p>_("Critical configuration items at this stage:") <........></p>
+<p><strong>_("NOTE:") <font color=red>_("TEXT REQUIRED")</font></strong></p>
 </div>
 
-At this point, your tuners now know what networks to use: one network can
-appear on multiple tuners (many-to-one), and one tuner can have multiple
-networks.
+###3. _("Associate the Network with the Respective Tuner(s)")
 
-### 4. If Necessary, Manually Add Muxes
+**_("Tvheadend web interface"): __("Configuration") -> _("DVB Inputs") -> _("TV Adapters")_**
 
-**Tvheadend web interface: _Configuration -> DVB Inputs -> Muxes_**
+_("Associate each of your tuners with the correct network through") _("Parameters") -> _("Basic Settings")_. 
 
-Ideally, this is where you'll see a list of the pre-populated muxes as created
-when you set up your initial network. However, should there be any issues,
-this is where you can manually add missing muxes. You only really need to
-worry about this if the pre-defined list didn't work (e.g. because of
-out-of-date data as broadcasters re-arrange their services or because automatic
-detection hasn't successfully found all the muxes over time. 
+_("This can be as simple or as complex as necessary. You may simply have, for \
+example, a single DVB-S2 network defined and then associate this with all \
+DVB-S2 tuners. Or, you might have multiple networks defined - different \
+satellites, different encoding. So, as further examples, you might define \
+and then associate an HD DVB-T2 (e.g. H.264) network with HD tuners, while \
+having a separate SD network associated with an independent SD (e.g. MPEG-2) \
+tuner.")
 
-If you do need to add something manually, you'll need to search the Internet
-for details of the appropriate transmitter and settings: satellites tend not
-to change much and are universal over a large area, but terrestrial muxes
-are typically very localised and you'll need to know which specific transmitter
-you're listening to. 
+<div class="admonition warning">
+<p class="admonition-title">_("Critical Configuration Items")</p>
+<p>_("Critical configuration items at this stage"): <........></p>
+<p><strong>_("NOTE:") <font color=red>_("TEXT REQUIRED")</font></strong></p>
+</div>
+
+_("At this point, your tuners now know what networks to use: one network can \
+appear on multiple tuners (many-to-one), and one tuner can have multiple \
+networks.")
+
+### 4. _("If Necessary, Manually Add Muxes")
+
+**_("Tvheadend web interface:") __("Configuration") -> _("DVB Inputs") -> _("Muxes")_**
+
+_("Ideally, this is where you'll see a list of the pre-populated muxes as created \
+when you set up your initial network. However, should there be any issues, \
+this is where you can manually add missing muxes. You only really need to \
+worry about this if the pre-defined list didn't work (e.g. because of \
+out-of-date data as broadcasters re-arrange their services or because automatic \
+detection hasn't successfully found all the muxes over time.")
+
+_("If you do need to add something manually, you'll need to search the Internet \
+for details of the appropriate transmitter and settings: satellites tend not \
+to change much and are universal over a large area, but terrestrial muxes \
+are typically very localised and you'll need to know which specific transmitter \
+you're listening to.")
 
 Good sources of transmitter/mux information include:
 
@@ -110,41 +111,41 @@ force a scan and effectively ask your tuner what it can see.
 
 **Tvheadend web interface: _Configuration -> DVB Inputs -> Services_**
 
-This is where the services will appear as your tuners tune to the muxes based
-on the network you told them to look on. Again, remember what's happening: 
-Tvheadend is telling your tuner hardware (via the drivers) to sequentially
-tune to each mux it knows about, and then see what 'programmes' it can see
-on that mux, each of which is identified by a series of unique identifiers
-that describe the audio stream(s), the video stream(s), the subtitle stream(s)
-and language(s), and so on.
+_("This is where the services will appear as your tuners tune to the muxes based \
+on the network you told them to look on. Again, remember what's happening: \
+Tvheadend is telling your tuner hardware (via the drivers) to sequentially \
+tune to each mux it knows about, and then see what 'programmes' it can see \
+on that mux, each of which is identified by a series of unique identifiers \
+that describe the audio stream(s), the video stream(s), the subtitle stream(s) \
+and language(s), and so on.")
 
-(For the technically-minded, these unique identifiers - the elementary streams
-- are referred to as 'packet identifiers' or 'PIDs').
+_("(For the technically-minded, these unique identifiers - the elementary streams \
+- are referred to as 'packet identifiers' or 'PIDs').")
 
 > To force a scan ...
-##NOTE: <font color=red>TEXT REQUIRED</font>
+##NOTE: <font color=red>_("TEXT REQUIRED")</font>
 
-### 6. Map Services to Channels
+### 6. <x>Map Services to Channels</x>
 
-Once scanning for services is complete, you need to map the services to 
+<x>Once scanning for services is complete, you need to map the services to 
 channels so your client can actually request them (i.e. so you can watch
-or record). You can do this in two places:
+or record). You can do this in two places</x>:
 
-**Tvheadend web interface: _Configuration -> DVB Inputs -> Services_**
+**<x>Tvheadend web interface</x>: _<x>Configuration</x> -> <x>DVB Inputs</x> -> <x>Services</x>_**
 
-Press the "Map All" button. Note the resultant dialog box that allows you
+<x>Press the "Map All" button. Note the resultant dialog box that allows you
 to exclude some services from the mapping: this is covered in more detail
-later in this guide. 
+later in this guide.</x>
 
-**Tvheadend web interface: _Configuration -> Channel/EPG -> Channels_**
+**<x>Tvheadend web interface</x>: _<x>Configuration</x> -> <x>Channel/EPG</x> -> <x>Channels</x>_**
 
-Press the "Map Services" button. Again, you can exclude services as you
-can for 'Map All', above.
+<x>Press the "Map Services" button. Again, you can exclude services as you
+can for 'Map All', above.</x>
 
-> Any explanation on how a channel can map to multiple services <......>
+> <x>Any explanation on how a channel can map to multiple services</x> <......>
 
-> Anything about using bouquets
-##NOTE: <font color=red>TEXT REQUIRED</font>
+> <x>Anything about using bouquets</x>
+##<x>NOTE:<x> <font color=red><x>TEXT REQUIRED</x></font>
 
 ### 7. Watch TV
 
